@@ -19,7 +19,11 @@
 </head>
 <body>
     {% include "navbar.html" %}
-    {% include "footer.html" %}
+    {% block content %} 
+      
+    {% endblock %}
+
+  {% include 'footer.html' %}
 
     {% block content %} <h1>News for {{date|date:"l d-F Y"}}</h1> {%endblock%}
     {% block scripts %}
