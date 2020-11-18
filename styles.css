@@ -1,3 +1,7 @@
+body{
+  background-image: url(./static/tiard-schulz-ejNsems6Nuo-unsplash.jpg);
+}
+
 /* Style the navigation bar */
 .navbar {
     width: 100%;

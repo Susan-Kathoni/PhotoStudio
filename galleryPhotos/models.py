@@ -5,10 +5,11 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Image(models.Model):
-    image_url = cloudinary.models.CloudinaryField('image', blank=True)
+    # image = models.ImageField(upload_to = 'images/', default = 'images')
+    image_url = CloudinaryField('image', blank=True)
     title = models.CharField(max_length=100)
     category = models.ForeignKey('Category',default='', on_delete = models.CASCADE)
-    imageDescription = models.CharField(max_length=250)
+    imageDescription = models.CharField(max_length=450)
     image_location = models.ForeignKey('Location',default='', on_delete = models.CASCADE)
     date_uploaded = models.DateTimeField(auto_now_add=True)
 
@@ -20,16 +21,29 @@ class Image(models.Model):
 
     
     def __str__(self):
-        return self.save()
+        return self.title
 
 
-    def upload_image(self,image=None,title=None, category=None, image_location=None, imageDescription=None, date_uploaded=None):
-        self.image = image if image else self.image
-        self.title = title if title else self.Title
-        self.category = category if category else self.category
-        self.image_location = image_location if image_location else self.image_location
-        self.imageDescription = imageDescription if imageDescription else self.imageDescription
-        self.date_uploaded = date_uploaded if date_uploaded else self.date_uploaded 
+    # def upload_image(self,image=None,title=None, category=None, image_location=None, imageDescription=None, date_uploaded=None):
+    #     self.image = image if image else self.image
+    #     self.title = title if title else self.Title
+    #     self.category = category if category else self.category
+    #     self.image_location = image_location if image_location else self.image_location
+    #     self.imageDescription = imageDescription if imageDescription else self.imageDescription
+    #     self.date_uploaded = date_uploaded if date_uploaded else self.date_uploaded 
+
+    @classmethod
+    def images(cls):
+        images=cls.objects.all()
+        return images
+
+    @classmethod
+    def search_by_location(cls, value):
+        '''
+        Method to filter images by location
+        '''
+        result = cls.objects.filter(image_location__name__icontains=value)
+        return result 
 
 
     def delete_image(self):
@@ -42,6 +56,9 @@ class Image(models.Model):
         '''
         result = cls.objects.filter(category__category__icontains=search_term)
         return result 
+
+
+    
 
 
 class Location(models.Model):
