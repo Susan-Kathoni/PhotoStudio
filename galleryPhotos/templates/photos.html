@@ -1,27 +1,31 @@
 {% extends 'all/base.html'%}
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12 text-center">
-      <!-- <h1 class="text-white text-center intro" style="font-family: 'Aclonica', sans-serif;;">PHOTOSTUDIO</h1> -->
-      <hr>
-    </div>
-  </div>
-</div>
 
 <section>
   {% block content %}
+
+  <div class="container h-100 d-flex" style="opacity: 0.5;">
+    <div class="jumbotron my-auto" style=" height:32vh">
+      <p style="font-family: 'Fondamento', cursive; font-size: 35px">Welcome, search your selected images based on the
+        following limited categories: Parks to visit, beaches and countries. </p>
+      <hr>
+    </div>
+  </div>
+ 
+
+
   <div class="row container-fluid content">
     {% for galleryImage in galleryImages %}
-    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 thumbnails" style="height:40vh; margin-bottom:10vh; padding-left:40px">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 thumbnails"
+      style="height:40vh; margin-bottom:10vh; padding-left:40px">
 
-      <div class="card" >
-        <div class="card-body" >
+      <div class="card">
+        <div class="card-body">
           <img src="{{galleryImage.image_url.url}}" class="img-fluid img-thumbnail img-responsive " alt="image"
-            data-toggle="modal" data-target="#{{galleryImage.id}}" style="height:40vh; width:40vw"/>
+            data-toggle="modal" data-target="#{{galleryImage.id}}" style="height:40vh; width:40vw" />
         </div>
       </div>
     </div>
-    
+
     <div class="modal fade" id="{{galleryImage.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
       <div class="modal-dialog">
@@ -33,20 +37,21 @@
 
             <img src="{{galleryImage.image_url.url}}" width="100%" alt="">
 
-            <h5 class="text-center" style="font-size: 35px; font-family: 'Niconne', cursive;">
+            <h5 class="text-center" style="font-size: 35px; font-family: 'Bigshot One', cursive;">
               <strong> {{galleryImage.title}}</strong>
             </h5>
-            <p class="text-left" style="font-size: 15px">
-              Category of the image:{{galleryImage.category}}
+            <p class="text-left" style="font-size: 20px; font-family: 'Stylish', sans-serif;">
+              <span style="font-family: 'Stylish', sans-serif;"><strong>IMAGE
+                  CATEGORY:</strong></span>{{galleryImage.category}}
             </p>
-            <p class="text-left" style="font-size: 15px">
-              About the image: {{galleryImage.imageDescription}}
+            <p class="text-left" style="font-size: 20px; font-family: 'Stylish', sans-serif;">
+              <strong>ABOUT THE IMAGE:</strong>{{galleryImage.imageDescription}}
             </p>
-            <p class="text-left" style="font-size: 15px">
-              Where the photo was taken:{{galleryImage.image_location}}
+            <p class="text-left" style="font-size: 20px; font-family: 'Stylish', sans-serif;">
+              <strong>LOCATION WHERE TAKEN:</strong> {{galleryImage.image_location}}
             </p>
-            <p class="text-left" style="font-size: 15px">
-              The photo was uploaded on:{{galleryImage.date_uploaded}}
+            <p class="text-left" style="font-size: 20px; font-family: 'Stylish', sans-serif;">
+              <strong>UPLOADED ON:</strong> {{galleryImage.date_uploaded}}
             </p>
 
           </div>
@@ -66,7 +71,7 @@
     </div>
     {% endfor %}
   </div>
-  
+
 
   <!-- Button trigger modal -->
 
@@ -75,6 +80,8 @@
   {% endblock %}
 
 </section>
+
+
 
 <script>
   copy = (element) => {
