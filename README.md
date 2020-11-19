@@ -22,6 +22,7 @@ This is a personal blogging website where I can create and share my opinions and
 6. HTML
 7. CSS
 8. Postres
+9. Figma -https://www.figma.com/file/8IPTmRureIPh3a77iF4n2C/Untitled?node-id=0%3A1
 
 ## Features
 
