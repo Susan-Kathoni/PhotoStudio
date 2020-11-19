@@ -1,4 +1,4 @@
-# BetterBlogs
+# PHOTOSTUDIO
 
 ## Screenshot of the app running on the browser
 https://github.com/Susan-Kathoni/PhotoStudio/issues/1#issue-746174545
