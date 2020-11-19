@@ -31,9 +31,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-MODE=config("MODE", default="prod")
+MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False)
+DEBUG = config('DEBUG', default=False, cast=bool)
 # development
 if config('MODE')=="dev":
    DATABASES = {
@@ -44,15 +44,14 @@ if config('MODE')=="dev":
            'PASSWORD': config('DB_PASSWORD'),
            'HOST': config('DB_HOST'),
            'PORT': '',
-           'DATABASE_URL': 'postgres://xtrvoootnduhyu:1722a960244457db9c4c18db58f800fbe567c397baf27a7e6b26ab065a8593ae@ec2-52-72-34-184.compute-1.amazonaws.com:5432/d9t7m2vegl4tas',
-       }
+            }
        
    }
 # production
 else:
    DATABASES = {
        'default': dj_database_url.config(
-           default='postgres://xtrvoootnduhyu:1722a960244457db9c4c18db58f800fbe567c397baf27a7e6b26ab065a8593ae@ec2-52-72-34-184.compute-1.amazonaws.com:5432/d9t7m2vegl4tas'
+           default= config('DATABASE_URL')
        )
    }
 
@@ -164,6 +163,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # configuring the location for media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+print('DATABASES', DATABASES)
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
