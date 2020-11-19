@@ -10,7 +10,7 @@ Susan K. Kariuki
 
 ## Description
 
-This is a personal blogging website where I can create and share my opinions and other users can read and comment on them. Users can also express their ideas and opinions by writing their own blog posts. Additionally,the site also displays random quotes to inspire my users. 
+This is a personal gallery application that displays my photos for others to see and also view photos based on the location they were taken. A user can see photos that interest them, share the link of the photo(s), . The photos will have details about them e.g. categories.
 
 ## Technologies Used
 
